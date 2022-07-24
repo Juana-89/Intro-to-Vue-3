@@ -9,11 +9,17 @@
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
   </head>
+  <nav class="nav-bar"></nav>
   <body>
     <div id="app">
       <h1>{{ product }}</h1>
       <h4>{{ description }} </h4>
+      <a v-bind:href="url">Made by Vue Mastery </a> <!-- Forma de llamar a la url de la data en main-->
+      <div class="product-image">
+        <img v-bind:src="image" /> <!-- Forma de llamar a imagen de la data en main-->
+      </div>
     </div>
+    
     <!-- Import Js -->
     <script src="./main.js"></script>
   </body>
