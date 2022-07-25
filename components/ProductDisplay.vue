@@ -23,8 +23,8 @@ app.component('product-display', {
             <li v-for="detail in details">{{ detail }}</li>
             </ul>
             <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" :style="{ backgroundColor: variant.color }"></div>
-            <button class="button" @click="addToCart" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
-            <button class="button" @click="removeToCart">Remove</button>
+            <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>
+            <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" @click="removeItem">Remove</button>
         </div>
         </div>
     </div>`,
@@ -45,12 +45,10 @@ app.component('product-display', {
 },
 methods: {
     addToCart() {
-        this.cart += 1 // Llamar al método 'addToCart' para que vaya sumando 1 
+        this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
     },
-    removeToCart() {
-        if(this.cart >=1) {
-        this.cart -= 1 // Llamar al método 'removeToCart' para que vaya restando 1 
-        }
+    removeItem() {
+        this.$emit('remove-from-cart', this.variants[this.selectedVariant].id)
     },
     updateVariant(index) {
         this.selectedVariant = index
