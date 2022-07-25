@@ -9,17 +9,31 @@
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
   </head>
-  <nav class="nav-bar"></nav>
   <body>
     <div id="app">
-      <h1>{{ product }}</h1>
-      <h4>{{ description }} </h4>
-      <a v-bind:href="url">Made by Vue Mastery </a> <!-- Forma de llamar a la url de la data en main-->
-      <div class="product-image">
-        <img v-bind:src="image" /> <!-- Forma de llamar a imagen de la data en main-->
+    <div class="nav-bar"></div>
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <img v-bind:src="image" /> <!-- Forma de llamar a imagen de la data en main-->
+          </div>
+          <div class="product-info">
+            <h1>{{ product }}</h1>
+            <h4>{{ description }} </h4>
+            <a v-bind:href="url">Made by Vue Mastery </a> <!-- Forma de llamar a la url de la data en main-->
+            <p v-if="inventory > 10">In Stock</p>  <!-- el v-if mostrará esto si el atributo es true en main-->
+            <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+            <p v-else>Out of Stock</p><!-- el v-else mostrará esto si es lo contrario-->
+            <p v-show="onSale">On sale!</p>
+            <ul>
+              <li v-for="(size,index) in sizes" :key="index">{{ size }}</li> <!-- Recorre el elemento details-->
+            </ul>
+            <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+           
+          </div>
+        </div>
       </div>
     </div>
-    
     <!-- Import Js -->
     <script src="./main.js"></script>
   </body>
