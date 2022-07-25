@@ -7,8 +7,8 @@ const app = Vue.createApp({
             url: 'https://www.vuemastery.com/',
             // inStock: true Se mostrará dependiendo de si hay stock o no
             inventory: 100, // Se mostrará 'in Stock' si inventory es mayor a 10
-            onSale: true,
-            details: ['50% cotton', '30% wool', '20% polyester'],
+            inStock: false,
+            details: ['50% algodón', '30% lana', '20% poliéster'],
             sizes: ['S', 'M', 'L', 'XL'],
             variants: [
                 { id: 2234, color: 'green', image: './assets/images/socks_green.jpg' },
