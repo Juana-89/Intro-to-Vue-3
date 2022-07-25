@@ -11,11 +11,25 @@ const app = Vue.createApp({
             details: ['50% cotton', '30% wool', '20% polyester'],
             sizes: ['S', 'M', 'L', 'XL'],
             variants: [
-                { id: 2234, color: 'green' },
-                { id: 2235, color: 'blue' }
+                { id: 2234, color: 'green', image: './assets/images/socks_green.jpg' },
+                { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg' }
               ],
+            cart:0
         }
-    }
+    },
+    methods: {
+        addToCart() {
+            this.cart += 1 // Llamar al método 'addToCart' para que vaya sumando 1 
+        },
+        updateImage(variantImage) {
+            this.image = variantImage // Llamar al método 'updateImage' para actualizar la imagen cuando el puntero esté por encima del 'color' 
+          },
+        removeToCart() {
+            if(this.cart >=1) {
+            this.cart -= 1 // Llamar al método 'removeToCart' para que vaya restando 1 
+            }
+        },
+      }
 })
 // Montando App
 const mountedApp = app.mount('#app') // Permite conectar con el app del DOM
