@@ -13,29 +13,14 @@
     <div id="app">
     <div class="nav-bar"></div>
     <div class="cart">Cart({{ cart }})</div> <!--Se llama al método Cart-->
-    <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <img v-bind:src="image"><!-- Forma de llamar a imagen de la data en main-->
-          </div>
-          <div class="product-info">
-            <h1>{{ title }}</h1>
-            <!-- <h1>{{ product }}</h1> -->
-            <h4>{{ description }} </h4>
-            <p v-if="onSale">{{ saleMessage }}</p>
-            <p v-if="inventory > 10">In Stock</p>  <!-- el v-if mostrará esto si el atributo es true en main-->
-            <p v-else>Out of Stock</p><!-- el v-else mostrará esto si es lo contrario-->
-            <ul>
-              <li v-for="detail in details">{{ detail }}</li>
-            </ul>
-            <div class="color-circle" :style="{ backgroundColor: variant.color }" v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)"></div>
-            <button class="button" @click="addToCart"  :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button> <!--v-on: o @-->
-            <button class="button" @click="removeToCart">Remove to Cart</button> <!--v-on: o @-->
-          </div>
-        </div>
-      </div>
+    <product-display :premium="premium"></product-display>
+    <product-details></product-details>
     </div>
     <!-- Import Js -->
     <script src="./main.js"></script>
+    <!-- Import Components -->
+    <script src="./components/ProductDisplay.vue"></script>
+    <script src="./components/ProductDetails.vue"></script>
+    <script>const mountedApp = app.mount('#app')</script>
   </body>
 </html>
